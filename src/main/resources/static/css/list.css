@@ -1,0 +1,180 @@
+.top{
+	margin:0px;
+	margin-top: 1px;
+	height: 1px;
+	width:auto;
+	padding: 0px;
+	/* border: 1px solid pink; */
+
+
+}
+.shortcut_fr {
+    /* list-style-type:none; */
+    margin:0px;
+    width:100%;
+	padding:0px;
+	height:30px ;
+	background-color: #999;
+	/* border: 2px solid #ff0000; */
+
+}
+
+.spacer{
+	overflow: hidden;
+	margin: 11px 5px 0;
+	width: 1px;
+	height: 10px;
+	color: #ccc;
+	float: right;
+	/* border: 1px solid #FF0000; */
+}
+
+.shortcut_itemR {
+	padding: 2px;
+    display:inline;
+    color:#999;
+	float: right;
+	margin:5px;
+	font-size: smaller;
+	/* border: 1px solid blue; */
+}
+
+#searchPart{
+	color:#666;
+	width: auto;
+	height: 100px;
+	margin-top:10px;
+}
+
+#searcBox{
+	background-color: #FFFFFF;
+	margin-top:30px;
+	padding: 0px;
+	border: 2px solid #FF0000;
+	width: 530px;
+	height: 40px;
+	position: relative;
+	left:400px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#searchInput{
+	margin:0px;
+	/* paddding:17px; */
+	width: 530px;
+	height: 40px;
+	border: 1px;
+	text-indent: 17px;
+	font-family: Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+	font: 400 13.3333px Arial;
+	display: inline-block;
+}
+
+#searchBtn{
+	margin:0px;
+	margin-top: 30px;
+	height: 40px;
+	width:60px;
+	background-color: red;
+	border: 2px solid #FF0000;
+	position: relative;
+	left:390px;
+	display: inline-block;
+	vertical-align: top;
+}
+ #searchButton{
+	margin-left:20px;
+	margin-top:8px;
+}
+
+.layui-icon-search{
+	font-size: 40px;
+	/* color: red; */
+	color: red;
+}
+
+#center{
+	width:auto;
+	height:500px;
+}
+
+.photo{
+	height: 470px;
+	width: 590px;
+}
+
+#sliderPart{
+	height: 470px;
+	width: auto;
+	position: relative;
+	left: 100px;
+	background-color: darkgray;
+	display: inline-block;
+	vertical-align: top;
+
+}
+#navBox{
+	background-color: #F2F2F2;
+	width: 300px;
+	height:470px;
+	display: inline-block;
+}
+#navigation{
+	width: 226px;
+	height:470px;
+	margin-left: 156px;
+	background-color: white;
+}
+
+.nav_ul{
+	display: inline-block;
+	width: 400px;
+	height: 20px;
+	text-align: left;
+	padding-top: 5px;
+	/* left:100px; */
+}
+
+.shortcut_itemL{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#discount{
+	display: inline-block;
+	position: relative;
+	left:100px;
+	background-color: gray;
+	vertical-align: top;
+	width: 300px;
+	height: 470px;
+}
+
+#dhead{
+	background-color: red;
+	height: 30px;
+}
+
+#dheadp{
+	padding-left: 30px;
+	color: white;
+	display: inline-block;
+
+}
+
+.layui-icon-praise{
+	color: red;
+	font-size: 60px;
+}
+
+
+#dbox{
+
+}
+
+#rheadp{
+	width: auto;
+	height: 30px;
+	background-color: #F2F2F2;
+}

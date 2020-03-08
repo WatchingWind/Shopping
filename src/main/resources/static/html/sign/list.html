@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link  rel="stylesheet" type="text/css" href="../../css/list.css"></link>
+    <link  rel="stylesheet" type="text/css" href="../../layui/css/layui.css" />
+    <script src="../../
+
+	layui/layui.js"></script>
+    <script>
+	layui.use('carousel', function(){
+	  var carousel = layui.carousel;
+	  //建造实例
+	  carousel.render({
+	    elem: '#sliderBox'
+	    ,width: '590px'//设置容器宽度
+		,height: '470px'
+		,arrow: 'always' //始终显示箭头
+	    //,anim: 'updown' //切换动画方式
+	  });
+	});
+	</script>
+</head>
+<body>
+
+<div id="my_accessibility" class="top">
+
+</div>
+<!-- 顶部占位 -->
+<div id="head">
+    <ul class="shortcut_fr">
+        <!--  -->
+        <!-- style="display:inline" -->
+        <li class="shortcut_itemR"><a href="/html/sign/signIn.html">注册登录</a></li>
+        <li class="spacer"></li>
+        <li class="shortcut_itemR"><a href="">商品咨询</a></li>
+        <li class="spacer"></li>
+        <li class="shortcut_itemR"><a href="">订单查询</a></li>
+    </ul>
+</div>
+<!-- 头部信息 -->
+<div id="searchPart">
+    <div id="searcBox">
+        <input type="text" id="searchInput" />
+
+        <!-- <button id="searchButton"></i></button> -->
+    </div>
+    <div id = "searchBtn">
+        <button id="searchButton"><i class="layui-icon layui-icon-search"></i></button>
+    </div>
+</div>
+<!-- 搜索部分 -->
+<div id="center">
+    <div id="navBox">
+        <div id="navigation">
+            <ul class="nav_ul" >
+                <li class="shortcut_itemL"><a href="">家用电器</a></li>
+            </ul>
+
+            <ul class="nav_ul">
+                <li class="shortcut_itemL"><a href="">电脑</a></li>
+                <li class="shortcut_itemL"><a href="">办公</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- 导航部分 -->
+
+    <div id="sliderPart">
+        <div class="layui-carousel" id="sliderBox">
+            <div carousel-item>
+                <div><img src="../../images/list/jujia.jpg"  class="photo"/></div>
+                <div><img src="../../images/list/goods.jpg.webp" class="photo" /></div>
+                <!-- <div><img src="../../images/list/shoes.jpg.webp" class="photo" /></div> -->
+                <div><img src="../../images/list/jujia.jpg"  class="photo"/></div>
+                <div><img src="../../images/list/goods.jpg.webp" class="photo" /></div>
+            </div>
+        </div>
+    </div>
+    <!-- 滑动窗口 -->
+
+    <div id="discount" >
+        <div id="dhead">
+            <p id="dheadp">商品特惠</p>
+        </div>
+        <div id="mcontain">
+
+        </div>
+    </div>
+
+</div>
+
+<div id="recommend">
+    <div id="rhead">
+        <i class="layui-icon layui-icon-praise" ></i>
+        <p id="rheadp">好物推荐</p>
+    </div>
+
+    <div id="rcontain">
+        <div clas="rrow">
+            <div class="rinfo">
+                <div class="rimg"><img src=""></div>
+                <div class="rmessage"><p></p></div>
+            </div>
+            <div class="rinfo">
+                <div class="rimg"><img src=""></div>
+                <div class="rmessage"><p></p></div>
+            </div>
+            <div class="rinfo">
+                <div class="rimg"><img src=""></div>
+                <div class="rmessage"><p></p></div>
+            </div>
+            <div class="rinfo">
+                <div class="rimg"><img src=""></div>
+                <div class="rmessage"><p></p></div>
+            </div>
+            <div class="rinfo">
+                <div class="rimg"><img src=""></div>
+                <div class="rmessage"><p></p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+</html>
