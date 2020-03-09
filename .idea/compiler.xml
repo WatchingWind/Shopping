@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Shopping" />
+        <module name="my-shop-api" />
+        <module name="my-shop-common" />
+        <module name="my-shop-shiro" />
       </profile>
     </annotationProcessing>
   </component>
