@@ -20,7 +20,7 @@ my-shop项目不仅仅是一个开发架构，前后分离，而是努力打造�
 
 my-shop-manager --综合后台管理
 my-shop-api --微信小程序商城api接口
-my-shop-common --公共模块
+my-shop-com.shopmbg.common --公共模块
 my-shop-web --网站商城
 my-shop-merchants  --运营商管理平台
 my-shop-gen --代码生成

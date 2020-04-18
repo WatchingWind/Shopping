@@ -1,0 +1,49 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <!--引入properties文件-->
+  <properties resource="generator.properties"></properties>
+  <context id="myShopGenerate" targetRuntime="MyBatis3" defaultModelType="flat">
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+    <property name="javaFileEncoding" value="UTF-8"/>
+
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+    <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"></plugin>
+
+    <commentGenerator type="com.shop.mbg.CommentGenerator">
+      <property name="suppressAllComments" value="true"/>
+      <property name="suppressDate" value="true"/>
+      <property name="addRemarkComments" value="true"/>
+    </commentGenerator>
+
+    <jdbcConnection
+      driverClass="${jdbc.driverClass}"
+      connectionURL="${jdbc.connectionURL}"
+      userId="${jdbc.userId}"
+      password="${jdbc.password}"
+    >
+      <!--mysql 8 后 防止生成无用类-->
+      <property name="nullCatalogMeansCurrent" value="true" />
+    </jdbcConnection>
+   <!-- 生成配置-->
+    <!--Model/Entity相关配置-->
+    <javaModelGenerator targetPackage="com.shop.mbg.model" targetProject="my-shop-mbg/src/main/java"/>
+
+    <!--mybatis xml文件-->
+    <sqlMapGenerator targetPackage="mapper" targetProject="my-shop-mbg/src/main/resources"/>
+
+   <!-- 与mybatis xml对应的 mapper/dao接口类    type若为 ANNOTATEDMAPPER  则会生成基于注解的类，并且不会生成mapper xml文件-->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.shop.mbg.dao" targetProject="my-shop-mbg/src/main/java"/>
+
+
+    <!-- %生成全部表 ,也可指定特定表-->
+    <table tableName="%" >
+      <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+    </table>
+
+
+  </context>
+</generatorConfiguration>

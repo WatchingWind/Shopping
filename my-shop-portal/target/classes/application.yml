@@ -1,0 +1,14 @@
+#spring开头的多是跟spring自身属性及 spring集成比较好的（这些多事spring应用必须软件，如 数据库连接池)
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations: #这里的意思其实是例举出 mapper-locations 的列表，- 后是被当做一个字符串的
+   #classpath：只会到你的class路径中查找找文件。
+    #
+    #classpath*：不仅包含class路径，还包括jar文件中（class路径）进行查找。
+    #
+    #注意： 用classpath*:需要遍历所有的classpath，所以加载速度是很慢的；因此，在规划的时候，应该尽可能规划好资源文件所在的路径，尽量避免使用classpath*。
+   # - classpath:mapper/*.xml
+    - classpath:mapper/*.xml

@@ -1,0 +1,33 @@
+#spring开头的多是跟spring自身属性及 spring集成比较好的（这些多事spring应用必须软件，如 数据库连接池)
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations:
+    - classpath: mapper/*.xml
+    - classpath*: mapper/*.xml
+
+#自定义redis key
+redis:
+  key:
+    prefix:
+      authCode:
+
+
+secure:
+  ignored:
+    urls: # 白名单(一组连词线开头的行，构成一个数组。)
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js     #对所有的js，css,png,ico文件放行
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /druid/**
+      - /index.html
+
+picture:
+  prefix: localhost:8089

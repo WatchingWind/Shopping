@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mbg.dao.PsmProductMapper">
+  <resultMap id="BaseResultMap" type="com.shop.mbg.model.PsmProduct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="brand_id" jdbcType="BIGINT" property="brandId" />
+    <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
+    <result column="feight_templete_id" jdbcType="BIGINT" property="feightTempleteId" />
+    <result column="orig_price" jdbcType="DECIMAL" property="origPrice" />
+    <result column="cur_price" jdbcType="DECIMAL" property="curPrice" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="big_picture" jdbcType="VARCHAR" property="bigPicture" />
+    <result column="picture" jdbcType="CHAR" property="picture" />
+    <result column="publish" jdbcType="INTEGER" property="publish" />
+    <result column="new_status" jdbcType="INTEGER" property="newStatus" />
+    <result column="recommand_status" jdbcType="INTEGER" property="recommandStatus" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, brand_id, product_category_id, feight_templete_id, orig_price, cur_price, attribute, 
+    name, big_picture, picture, publish, new_status, recommand_status
+  </sql>
+  <select id="selectByExample" parameterType="com.shop.mbg.model.PsmProductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from psm_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from psm_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from psm_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.shop.mbg.model.PsmProductExample">
+    delete from psm_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.shop.mbg.model.PsmProduct">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into psm_product (brand_id, product_category_id, feight_templete_id, 
+      orig_price, cur_price, attribute, 
+      name, big_picture, picture, 
+      publish, new_status, recommand_status
+      )
+    values (#{brandId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, #{feightTempleteId,jdbcType=BIGINT}, 
+      #{origPrice,jdbcType=DECIMAL}, #{curPrice,jdbcType=DECIMAL}, #{attribute,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{bigPicture,jdbcType=VARCHAR}, #{picture,jdbcType=CHAR}, 
+      #{publish,jdbcType=INTEGER}, #{newStatus,jdbcType=INTEGER}, #{recommandStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.mbg.model.PsmProduct">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into psm_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="productCategoryId != null">
+        product_category_id,
+      </if>
+      <if test="feightTempleteId != null">
+        feight_templete_id,
+      </if>
+      <if test="origPrice != null">
+        orig_price,
+      </if>
+      <if test="curPrice != null">
+        cur_price,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="bigPicture != null">
+        big_picture,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="publish != null">
+        publish,
+      </if>
+      <if test="newStatus != null">
+        new_status,
+      </if>
+      <if test="recommandStatus != null">
+        recommand_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="productCategoryId != null">
+        #{productCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="feightTempleteId != null">
+        #{feightTempleteId,jdbcType=BIGINT},
+      </if>
+      <if test="origPrice != null">
+        #{origPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="curPrice != null">
+        #{curPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bigPicture != null">
+        #{bigPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=CHAR},
+      </if>
+      <if test="publish != null">
+        #{publish,jdbcType=INTEGER},
+      </if>
+      <if test="newStatus != null">
+        #{newStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recommandStatus != null">
+        #{recommandStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.shop.mbg.model.PsmProductExample" resultType="java.lang.Long">
+    select count(*) from psm_product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <select id="selectByAttribute" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from psm_product
+    where match(attribute) against(#{attributeVal});
+  </select>
+
+  <update id="updateByExampleSelective" parameterType="map">
+    update psm_product
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.brandId != null">
+        brand_id = #{record.brandId,jdbcType=BIGINT},
+      </if>
+      <if test="record.productCategoryId != null">
+        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="record.feightTempleteId != null">
+        feight_templete_id = #{record.feightTempleteId,jdbcType=BIGINT},
+      </if>
+      <if test="record.origPrice != null">
+        orig_price = #{record.origPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.curPrice != null">
+        cur_price = #{record.curPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.attribute != null">
+        attribute = #{record.attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bigPicture != null">
+        big_picture = #{record.bigPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picture != null">
+        picture = #{record.picture,jdbcType=CHAR},
+      </if>
+      <if test="record.publish != null">
+        publish = #{record.publish,jdbcType=INTEGER},
+      </if>
+      <if test="record.newStatus != null">
+        new_status = #{record.newStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.recommandStatus != null">
+        recommand_status = #{record.recommandStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update psm_product
+    set id = #{record.id,jdbcType=INTEGER},
+      brand_id = #{record.brandId,jdbcType=BIGINT},
+      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      feight_templete_id = #{record.feightTempleteId,jdbcType=BIGINT},
+      orig_price = #{record.origPrice,jdbcType=DECIMAL},
+      cur_price = #{record.curPrice,jdbcType=DECIMAL},
+      attribute = #{record.attribute,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      big_picture = #{record.bigPicture,jdbcType=VARCHAR},
+      picture = #{record.picture,jdbcType=CHAR},
+      publish = #{record.publish,jdbcType=INTEGER},
+      new_status = #{record.newStatus,jdbcType=INTEGER},
+      recommand_status = #{record.recommandStatus,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.mbg.model.PsmProduct">
+    update psm_product
+    <set>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="productCategoryId != null">
+        product_category_id = #{productCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="feightTempleteId != null">
+        feight_templete_id = #{feightTempleteId,jdbcType=BIGINT},
+      </if>
+      <if test="origPrice != null">
+        orig_price = #{origPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="curPrice != null">
+        cur_price = #{curPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="bigPicture != null">
+        big_picture = #{bigPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=CHAR},
+      </if>
+      <if test="publish != null">
+        publish = #{publish,jdbcType=INTEGER},
+      </if>
+      <if test="newStatus != null">
+        new_status = #{newStatus,jdbcType=INTEGER},
+      </if>
+      <if test="recommandStatus != null">
+        recommand_status = #{recommandStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.mbg.model.PsmProduct">
+    update psm_product
+    set brand_id = #{brandId,jdbcType=BIGINT},
+      product_category_id = #{productCategoryId,jdbcType=BIGINT},
+      feight_templete_id = #{feightTempleteId,jdbcType=BIGINT},
+      orig_price = #{origPrice,jdbcType=DECIMAL},
+      cur_price = #{curPrice,jdbcType=DECIMAL},
+      attribute = #{attribute,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      big_picture = #{bigPicture,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=CHAR},
+      publish = #{publish,jdbcType=INTEGER},
+      new_status = #{newStatus,jdbcType=INTEGER},
+      recommand_status = #{recommandStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
