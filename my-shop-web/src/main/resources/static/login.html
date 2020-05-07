@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/common.css" rel="stylesheet" type="text/css" />
@@ -10,6 +10,8 @@
 <script src="js/common_js.js" type="text/javascript"></script>
 <script src="js/footer.js" type="text/javascript"></script>
 <script src="js/lrtk.js" type="text/javascript"></script>
+<script src="js/vue.js" type="text/javascript"></script>
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 <title>用户登陆</title>
 </head>
 
@@ -18,7 +20,7 @@
  <div class="top">
    <div class="logo"><div class="logo_link"><a href="Index.html"><img src="images/logo.png"></a></div><div class="phone">免费咨询热线：<b>400-567-4556</b></div></div>
   </div>
- <div class="login">
+ <div class="login" id= "loginVue">
    <div class="log_img"><img src="images/imgbg_03.png" width="611" height="425"></div>
    <div class="log_c">
     <form>
@@ -32,11 +34,11 @@
               </tr>
               <tr height="70">
                 <td>用户名</td>
-                <td><input type="text" value="" class="l_user"></td>
+                <td><input type="text"  class="l_user" v-model="userName"></td>
               </tr>
               <tr height="70">
-                <td>密&nbsp; &nbsp; 码</td>
-                <td><input type="password" value="" class="l_pwd"></td>
+                <td>密 &nbsp; &nbsp; 码</td>
+                <td><input type="password"  class="l_pwd" v-model="password"></td>
               </tr>
               <tr>
               	<td>&nbsp;</td>
@@ -49,7 +51,8 @@
               </tr>
               <tr height="60">
               	<td>&nbsp;</td>
-                <td><input type="submit" value="登录" class="log_btn"></td>
+                <td><input type="button" value="登录" class="log_btn" @click="sub"></td>
+				<td v-show="show" style="color: red;">当前手机号已经被注册！</td>
               </tr>
             </tbody></table>
     </form>
@@ -63,4 +66,5 @@
 </div>
 </div>
 </body>
+<script src="js/login_vue.js"></script>
 </html>

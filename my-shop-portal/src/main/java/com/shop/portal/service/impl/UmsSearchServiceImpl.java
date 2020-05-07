@@ -18,7 +18,8 @@ public class UmsSearchServiceImpl implements UmsSearchService {
 
     @Override
     public List<PsmProduct> match(String keyWord, int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
+       // PageHelper.startPage(pageNum, pageSize);
+        System.out.println("UmsSearchService:"+keyWord);
         return psmProductMapper.selectByAttribute(keyWord);
       //  return psmProductMapper.selectByExample()
     }

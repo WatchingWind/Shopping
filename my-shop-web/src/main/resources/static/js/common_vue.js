@@ -30,25 +30,41 @@ Vue.component('page-header', {
 				alert('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
 			}
 		}
-	},
+	}
 });
 
-var search = new Vue({
-	el:"#header",
-	data:{
-		defVal:"面膜",
-		result:""
+const headTop = new Vue({
+    el:"#header_top",
+    data: {
+    }
+});
+
+
+
+//搜索页面
+/*
+const search = new Vue({
+	el:"#search",  //各实例不要有相同的前缀
+	data: {
+		defVal: "洗面奶",
+		keyWord: ""
 	},
 	methods:{
-		search : function() {
+		search: function() {
 			var inputVal = this.$refs.searchValue.value.trim();
 			if (inputVal == '' || inputVal == undefined || inputVal == null) {
-				this.result = this.defVal;
+				this.keyWord = this.defVal;
 			} else {
-				this.result = inputVal;
+				this.keyWord = inputVal;
 			}
-			console.log(this.result);
-		//	window.location.href = 'http://www.xxxx.com/?keyword= '+ $('#searchword').val() ;
+			console.log(this.keyWord);
+			window.location.href = 'search/keepVal?keyWord='+ this.keyWord;
 		}	
 	}
-})
+});
+*/
+
+
+
+
+

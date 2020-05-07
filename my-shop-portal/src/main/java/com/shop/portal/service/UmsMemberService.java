@@ -3,19 +3,21 @@ package com.shop.portal.service;
 import com.shop.mbg.model.User;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletResponse;
+
 public interface UmsMemberService {
 
     /**
      *用户登录
      */
      @Transactional
-    String  login(User user);
+    String  login(HttpServletResponse response, User user);
 
     /**
      * 用户注册
      */
      @Transactional
-    User register(User user);
+    boolean register(HttpServletResponse response,User user);
 
     /**
      * 生成验证码

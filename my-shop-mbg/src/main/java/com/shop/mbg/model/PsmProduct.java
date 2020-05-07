@@ -1,5 +1,6 @@
 package com.shop.mbg.model;
 
+import com.shop.mbg.config.PicturePrefix;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -103,7 +104,7 @@ public class PsmProduct implements Serializable {
     }
 
     public void setBigPicture(String bigPicture) {
-        this.bigPicture = bigPicture;
+        this.bigPicture = PicturePrefix.PREFIX +  bigPicture;
     }
 
     public String getPicture() {
@@ -111,7 +112,7 @@ public class PsmProduct implements Serializable {
     }
 
     public void setPicture(String picture) {
-        this.picture = picture;
+        this.picture = PicturePrefix.PREFIX + picture;
     }
 
     public Integer getPublish() {

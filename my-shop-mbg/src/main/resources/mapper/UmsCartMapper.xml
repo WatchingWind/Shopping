@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shop.mbg.dao.UmsCartMapper">
+  <update id="setGoodsNumber">
+    update ums_cart uc set uc.p_count = #{num} where uc.u_id = #{uId} and uc.p_id = #{pId};
+  </update>
+  <delete id="delGoods">
+    delete uc from ums_cart uc where uc.u_id = #{uId} and uc.p_id = #{pId};
+  </delete>
+
+  <select id="getCart" resultType="com.shop.mbg.vo.UmsCartVo">
+  <!--  private String picture;
+    private String attribute;
+    private BigDecimal price;
+    private int count;-->
+    select uc.u_id uId,p.picture,p.attribute,p.cur_price price,uc.p_count count,uc.p_id pId
+    from ums_cart uc,psm_product p
+    where uc.u_id = 18373320883 and uc.p_id = p.id;
+  </select>
+  <select id="getGoodsAmount" resultType="java.lang.Integer">
+    select count(*) amount from ums_cart uc where uc.u_id = #{uId};
+  </select>
+</mapper>

@@ -5,15 +5,25 @@ spring:
 
 mybatis:
   mapper-locations:
-    - classpath:dao/*.xml
-    - classpath*:dao/*.xml
+    - classpath:mapper/*.xml
+    - classpath*:mapper/*.xml
 
-#自定义redis key
+logging:
+  level:
+    com.shop.mbg.dao: debug
+
+#redis配置
 redis:
-  key:
-    prefix:
-      authCode:
-
+  host: 106.12.140.94
+  port: 6379
+  timeout: 3
+  password: 8888888866
+  poolMaxTotal: 10
+  poolMaxIdle: 10
+  poolMaxWait: 300
+  #redis key
+  token: token
+  tokenExpiredTime: 172800   #yml文件不支持计算表达式，所以需要先计算好
 
 secure:
   ignored:
@@ -30,4 +40,4 @@ secure:
       - /index.html
 
 picture:
-  prefix: localhost:8089
+  prefix: localhost:8089/

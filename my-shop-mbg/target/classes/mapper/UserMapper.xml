@@ -87,6 +87,12 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByUId" resultType="com.shop.mbg.model.User">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where u_id = #{UId}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -178,7 +184,8 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+
+    <update id="updateByExampleSelective" parameterType="map">
     update user
     <set>
       <if test="record.id != null">
