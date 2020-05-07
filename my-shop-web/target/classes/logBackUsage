@@ -1,0 +1,55 @@
+转换符	作  用	是否避免使用
+c{length}
+
+lo{length}
+
+logger{length}
+
+输出日志的logger名称，可有一个整型参数来缩短<logger>名称，有几种情况：
+
+1、不输入表示输出完整的<logger>名称
+
+2、输入0表示只输出<logger>最右边点号之后的字符串
+
+3、输入其他数字表示输出小数点最后边点号之前的字符数量
+
+否
+
+C{length}
+
+class{length}
+
+输出指定记录的请求的调用者的全限定名，length同上	是
+d{pattern}
+
+date{pattern}
+
+输出时间格式，模式语法同java.text.SimpleDateFormat兼容	否
+caller{depth}	输出生成日志的调用者的位置信息，整数选项表示输出信息深度	否
+L	输出执行日志的请求行号	是
+m
+
+msg
+
+message
+
+输出应用程序提供的信息	否
+m	输入执行日志请求的方法名	是
+n	输出平台相关的分行符"\n"或者"\r\n"，即换行	否
+p
+
+le
+
+level
+
+输出日志级别	否
+r
+
+relative
+
+输出从程序启动到创建日志记录的时间，单位为毫秒	否
+t
+
+thread
+
+输出产生日志的线程名称	否

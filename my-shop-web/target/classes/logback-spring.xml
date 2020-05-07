@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <!--应用名称-->
+    <property name="APP_NAME" value="mall-admin"/>
+    <!--日志文件保存根路径-->
+    <property name="LOG_BASE" value="E:/log"/>
+   <!-- 日志输出格式-->
+    <property name="ENCODER_PATTERN" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n" />
+
+   <!-- <property name="LOG_FILE_PATH" value="${LOG_BASE}"/>-->
+    <contextName>${APP_NAME}</contextName>
+    <!--每天记录日志到文件appender-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_BASE}/${APP_NAME}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${ENCODER_PATTERN}</Pattern>
+        </encoder>
+    </appender>
+    <!--输出到logstash的appender-->
+   <!-- <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>localhost:4560</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>-->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+        <!--<appender-ref ref="LOGSTASH"/>-->
+    </root>
+</configuration>

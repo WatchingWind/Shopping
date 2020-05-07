@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<link href="../../css/common.css" rel="stylesheet" type="text/css"/>
+	<link href="../../fonts/iconfont.css" rel="stylesheet" type="text/css"/>
+	<link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+	<link rel="../../stylesheet" href="css/common_vue.css">
+	<script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="../../js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+	<script src="../../js/common_js.js" type="text/javascript"></script>
+	<script src="../../js/footer.js" type="text/javascript"></script>
+	<script src="../../js/vue.js" type="text/javascript"></script>
+	<script src="../../js/vue-resource.js" type="text/javascript"></script>
+	<script src="../../js/vue-router.js" type="text/javascript"></script>
+	<style>
+		*{
+			margin: 0px 0px;
+		}
+		
+		#searchRes{
+			width: 1200px;
+			margin: 0px auto;
+			/* background-color: darkcyan; */
+		}
+		#searchRes ul{
+			padding: 0px;
+		}
+		#searchRes li{
+			float: left;
+			margin-right: 80px;
+			/* background-color: pink; */
+			list-style: none;
+			width: 220px;
+			height: 420px;
+			text-align: center;
+			color: #666;
+		}
+		
+		#searchRes li .orig{
+			color: #ff6700;
+		}
+		#searchRes li .cur{
+			color: #b0b0b0;
+			
+		}
+	</style>
+</head>
+<body>
+<div id="header_top">
+	<page-header></page-header>
+</div>
+<!--顶部样式2-->
+<div id="search" class="header page_style">
+	<div class="logo"><a href="index.html"><img src="../../images/logo.png"/></a></div>
+	<!--结束图层-->
+	<div class="Search">
+		<!-- vue中冒号加属性表示属性值为vue，是v-bind的语法糖 -->
+		<p><input name="" type="text" class="text" :placeholder="defVal" ref="searchValue" @keyup.enter="search"/>
+			<input name="" type="submit" value="搜 索" class="Search_btn" @click="search"/>
+		</p>
+		<!-- <p class="Words"><a href="#">苹果</a><a href="#">香蕉</a><a href="#">菠萝</a><a href="#">西红柿</a><a href="#">橙子</a><a
+                 href="#">苹果</a></p> -->
+	</div>
+	<!--购物车样式-->
+	<div class="hd_Shopping_list" id="Shopping_list">
+		<div class="s_cart"><em class="iconfont icon-cart2"></em><a href="Cart.html">我的购物车</a> <i class="ci-count" id="shopping-amount">0</i></div>
+		<!-- <div class="dorpdown-layer">
+            <div class="spacer"></div>
+            <ul class="p_s_list">
+                <li>
+                    <div class="img"><img src="images/tianma.png"></div>
+                    <div class="content"><p><a href="#">产品名称</a></p>
+                        <p>颜色分类:紫花8255尺码:XL</p></div>
+                    <div class="Operations">
+                        <p class="Price">￥55.00</p>
+                        <p><a href="#">删除</a></p></div>
+                </li>
+            </ul>
+            <div class="Shopping_style">
+                <div class="p-total">共<b>1</b>件商品　共计<strong>￥ 515.00</strong></div>
+                <a href="#" title="去购物车结算" id="btn-payforgoods" class="Shopping">去购物车结算</a>
+            </div>
+        </div> -->
+	</div>
+</div>
+	<header>搜索结果</header>
+	<div id = "searchRes">
+		<ul>
+			<li v-for="searchData in searchDatas" class="element" @click="">
+				<img :src="searchData.picture"/>
+				<del><span class="orig">{{searchData.curPrice}}元</span></del>
+				<span class="cur">{{searchData.origPrice}}元</span>
+				<p class="attr">{{searchData.attribute}}</p>
+			</li>
+		</ul>
+	</div>
+</body>
+	<script src="../../js/common_vue.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var search = new Vue({
+			el:"#searchRes",
+			data:{
+				searchDatas: [],
+				searchData: {
+					id: 2,
+					brandId: 1,
+					origPrice: 23.9,
+					curPrice: 23.9,
+					attribute: "妮维雅(NIVEA)去黑头磨砂洁面乳 100g（洗面奶 去黑头 去角质 卸妆）",
+					bigPicture: "http://127.0.0.1:8089/nivea/nivea1Big",
+					picture: "http://127.0.0.1:8089/nivea/nivea1.jpg"
+				}
+			},
+			created() {
+				this.$http.get("/search/data",{ credentials: true }).then(function(res) {
+					this.searchDatas = res.data.data; //res.data 是获取返回体数据部分    最后的.data 则是因为自定义数据部分key为data
+					console.log(this.searchDatas);
+					console.log("fdaf")
+					// this.searchDatas = res.data;
+				})
+			},
+			methods:{
+				detail : function() {
+					window.location.href="/"
+				}
+			}
+			
+
+		});
+	</script>
+</html>
